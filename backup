@@ -1,0 +1,28 @@
+<?php
+
+require_once "vendor/autoload.php";
+use Twilio\Rest\Client;
+
+// $AccountSid = $_ENV["ACa869c303ff9d09c86f7e4561381b8b10"];
+// $AuthToken = $_ENV["e0cf1f8c6479e047f4e76e83c58ead41"];
+
+$AccountSid = "ACa869c303ff9d09c86f7e4561381b8b10";
+$AuthToken = "e0cf1f8c6479e047f4e76e83c58ead41";
+
+$client = new Client($AccountSid, $AuthToken );
+
+try{
+    $call = $client->calls->create(
+      $_ENV["My_Number"],
+      "+639359186078",
+      //array ("url" => "http://dev.bizscout.biz/docs/voice.xml" )
+      array ("Url" => "http://demo.twilio.com/docs/voice.xml" )
+    );
+
+    echo "Start call: " . $callid->sid;
+} catch (Exception $e) {
+
+  echo "Error: " . $e->getMessage();
+}
+
+ ?>
